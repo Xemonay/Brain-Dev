@@ -219,7 +219,7 @@ border-radius:10px;</string>
        <string/>
       </property>
       <property name="pixmap">
-       <pixmap>../../../Downloads/signature.png</pixmap>
+       <pixmap>../Pictures/signature.png</pixmap>
       </property>
      </widget>
      <widget class="QPushButton" name="what_is_that">

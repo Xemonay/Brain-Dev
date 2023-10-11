@@ -1,13 +1,20 @@
-from PyQt5.QtCore import QThread, pyqtSignal
+from PyQt5.QtWidgets import QMainWindow
+from PyQt5.QtCore import QTimer
 
 
-class TimerThread(QThread):
-    time_signal = pyqtSignal(str)
+class Timer(QMainWindow):
+    def __init__(self, obj):
+        super().__init__()
+        self.timer = QTimer(self)
+        self.timer.timeout.connect(self.showtime)
+        self.obj = obj
+        self.seconds = 0
+        self.yes = True
 
-    def __init__(self, parent=None):
-        QThread.__init__(self, parent)
-
-    def run(self):
-        for x in range(11):
-            self.sleep(1)
-            self.time_signal.emit("16")
+    def showtime(self):
+        if self.yes:
+            self.seconds += 1
+            self.obj.timer.setText(f"00:{str(self.seconds).rjust(2, '0')}")
+            if self.seconds == 10:
+                self.yes = False
+                self.obj.not_good()

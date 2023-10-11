@@ -1,11 +1,12 @@
 import sys
-from PyQt5.QtCore import Qt
-from PyQt5 import uic
-from PyQt5.QtWidgets import QApplication, QMainWindow, QFileDialog
-from changeprofile import ChangeProfileForm
-from questionmark import Creator
-from list_of_games import ListOfGames
 from random import choice as ch
+from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
+from PyQt5 import uic
+from PyQt5.QtCore import Qt, QUrl
+from PyQt5.QtWidgets import QApplication, QMainWindow
+from changeprofile import ChangeProfileForm
+from list_of_games import ListOfGames
+from questionmark import Creator
 from quick_math_ import QuickMath
 
 if hasattr(Qt, 'AA_EnableHighDpiScaling'):
@@ -25,6 +26,10 @@ class BrainDevMain(QMainWindow):
         self.settings_bt.clicked.connect(self.test)
         self.edit_profile_bt.clicked.connect(self.change_profile_form)
         self.what_is_that.clicked.connect(self.mystery_bt)
+        self.player = QMediaPlayer(self)
+        self.player.setMedia(
+            QMediaContent(QUrl.fromLocalFile(r"C:\Users\faken\PycharmProjects\Brain-Dev\Music\c418-haggstrom-minecraft-volume-alpha-savefrom.com.wav")))
+        self.player.play()
 
     def test(self):
         print("I clicked ->) ", self.sender().text())

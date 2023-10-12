@@ -12,12 +12,19 @@ class WonGame(QDialog):
         self.name_label.setText(main.username.text())
         self.okay_bt.clicked.connect(self.yeah)
         self.other = other
+        self.main = main
         self.player = QMediaPlayer(self)
         self.player.setMedia(
-            QMediaContent(QUrl.fromLocalFile(r"C:\Users\faken\PycharmProjects\Brain-Dev\Sounds\WON!.wav")))
+            QMediaContent(QUrl.fromLocalFile(r"Sounds\WON!.wav")))
+        self.player.setVolume(main.player.volume())
         self.player.play()
         self.other.close()
 
     def yeah(self):
         self.player.stop()
+        self.main.player.play()
         self.close()
+
+    def closeEvent(self, event):
+        self.player.stop()
+        self.main.player.play()

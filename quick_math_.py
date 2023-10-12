@@ -1,7 +1,7 @@
 from random import choice as ch
-
+from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent, QMediaPlaylist
 from PyQt5 import uic
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QUrl
 from PyQt5.QtWidgets import QMainWindow
 
 from oh_no import OhNo
@@ -18,11 +18,20 @@ class QuickMath(QMainWindow):
         self.nx = tuple(range(-20, 21))
         self.sign = ("+", "-", "*")
         self.count = 0
+        self.main.player.pause()
         self.seq = f"{ch(self.nx)} {ch(self.sign)} {ch(self.nx)} = ?"
         self.sequance.setText(self.seq)
         self.correct = str(eval(self.seq[:-4]))
         self.timer_w = Timer(self)
         self.timer_w.timer.start(1000)
+        self.player = QMediaPlayer(self)
+        self.music_lst1 = QMediaPlaylist(self)
+        self.music_lst1.addMedia(QMediaContent(QUrl.fromLocalFile(r"Music\the-pink-panther-theme-savefrom.com.wav")))
+        self.player = QMediaPlayer(self)
+        self.music_lst1.setPlaybackMode(QMediaPlaylist.Loop)
+        self.player.setPlaylist(self.music_lst1)
+        self.player.play()
+        self.player.setVolume(self.main.player.volume())
         self.key_MINUS = Qt.Key_Minus
         self.key_BS = Qt.Key_Backspace
         self.key_0 = Qt.Key_0
@@ -47,6 +56,7 @@ class QuickMath(QMainWindow):
         self.bt_9.clicked.connect(self.addx)
         self.back_bt.clicked.connect(self.backb)
         self.minus_bt.clicked.connect(self.addx)
+
 
     def addx(self):
         if ((self.sender().text() != "0" and self.sender().text() != "-" and self.answer.text() != "0") or
@@ -102,4 +112,9 @@ class QuickMath(QMainWindow):
             if self.count == 10:
                 self.timer_w.yes = False
                 self.won = WonGame(self, self.main)
+                self.player.stop()
                 self.won.show()
+
+    def closeEvent(self, event):
+        self.player.stop()
+        self.main.player.play()

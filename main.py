@@ -26,28 +26,28 @@ class BrainDevMain(QMainWindow):
         uic.loadUi('Design//main0.ui', self)
         self.list_of_games_bt.clicked.connect(self.list_of_games_window)
         self.training_bt.clicked.connect(self.training)
-        self.shop_bt.clicked.connect(self.test)
         self.edit_profile_bt.clicked.connect(self.change_profile_form)
         self.what_is_that.clicked.connect(self.mystery_bt)
         self.player = QMediaPlayer(self)
-        self.music_lst = QMediaPlaylist(self)
-        self.music_lst.addMedia([QMediaContent(QUrl.fromLocalFile(
+        self.music_lst1 = QMediaPlaylist(self)
+        self.music_lst1.addMedia([QMediaContent(QUrl.fromLocalFile(
             r"Music\c418-haggstrom-minecraft-volume-alpha-savefrom.com.wav")),
             QMediaContent(QUrl.fromLocalFile(
                 r"Music\c418-wet-hands-minecraft-volume-alpha-savefrom.com.wav")),
             QMediaContent(QUrl.fromLocalFile(
-                r"Music\c418-droopy-likes-your-face-minecraft-volume-alpha-savefrom.com.wav")),
+                r"Music\c418-droopy-likes-your-face-minecraft-volume-alpha-savefrom.live.wav")),
             QMediaContent(QUrl.fromLocalFile(
-                r"CMusic\c418-subwoofer-lullaby-minecraft-volume-alpha-savefrom.com.wav")),
+                r"Music\c418-subwoofer-lullaby-minecraft-volume-alpha-savefrom.live.wav")),
             QMediaContent(QUrl.fromLocalFile(
-                r"Music\c418-sweden-minecraft-volume-alpha-savefrom.com.wav")),
+                r"Music\c418-sweden-minecraft-volume-alpha-savefrom.live.wav")),
             QMediaContent(QUrl.fromLocalFile(
-                r"Music\c418-equinoxe-minecraft-volume-alpha-savefrom.com.wav"))])
+                r"Music\c418-equinoxe-minecraft-volume-alpha-savefrom.live.wav"))])
         self.player = QMediaPlayer(self)
-        self.player.setPlaylist(self.music_lst)
+        self.music_lst1.setPlaybackMode(QMediaPlaylist.Loop)
+        self.player.setPlaylist(self.music_lst1)
         self.player.play()
         self.shop_bt.clicked.connect(self.test)
-        self.settings_bt.clicked.connect(self.setting)
+        self.music_bt.clicked.connect(self.setting)
         self.edit_profile_bt.clicked.connect(self.change_profile_form)
         self.what_is_that.clicked.connect(self.mystery_bt)
 
@@ -72,6 +72,7 @@ class BrainDevMain(QMainWindow):
 
     def quick_math(self):
         self.quickmath = QuickMath(self)
+        self.player.pause()
         self.quickmath.show()
 
     def math(self):

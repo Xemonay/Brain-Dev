@@ -44,8 +44,8 @@ background-color: #FFC107;
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>20</x>
-     <y>180</y>
+     <x>30</x>
+     <y>130</y>
      <width>221</width>
      <height>31</height>
     </rect>
@@ -68,8 +68,8 @@ background-color: #FFC107;
   <widget class="QPushButton" name="change_msc">
    <property name="geometry">
     <rect>
-     <x>270</x>
-     <y>180</y>
+     <x>280</x>
+     <y>130</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -86,8 +86,8 @@ background-color: #FFC107;
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>90</x>
-     <y>220</y>
+     <x>100</x>
+     <y>170</y>
      <width>71</width>
      <height>16</height>
     </rect>
@@ -159,6 +159,48 @@ background-color: #FF9800;
    </property>
    <property name="text">
     <string>PREV</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_4">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>220</y>
+     <width>261</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Microsoft Tai Le</family>
+     <pointsize>16</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: white;
+background-color: #FFC107;
+</string>
+   </property>
+   <property name="text">
+    <string>Change to DEFAULT MUSIC</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="change_msc_0">
+   <property name="geometry">
+    <rect>
+     <x>310</x>
+     <y>220</y>
+     <width>75</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">color: white;
+background-color: #FFC107;
+</string>
+   </property>
+   <property name="text">
+    <string>CHANGE</string>
    </property>
   </widget>
  </widget>

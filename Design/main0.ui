@@ -125,7 +125,7 @@ border-radius:10px;</string>
        <string>List of Games</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="settings_bt">
+     <widget class="QPushButton" name="music_bt">
       <property name="geometry">
        <rect>
         <x>340</x>
@@ -149,7 +149,7 @@ border-style: outset;
 border-radius:10px;</string>
       </property>
       <property name="text">
-       <string>Settings</string>
+       <string>Music</string>
       </property>
      </widget>
      <widget class="QPushButton" name="training_bt">

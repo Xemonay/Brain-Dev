@@ -1,13 +1,17 @@
 import sys
 from random import choice as ch
-from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
+
 from PyQt5 import uic
 from PyQt5.QtCore import Qt, QUrl
+from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent, QMediaPlaylist
 from PyQt5.QtWidgets import QApplication, QMainWindow
+
 from changeprofile import ChangeProfileForm
 from list_of_games import ListOfGames
 from questionmark import Creator
+from set_form import SetMusic
 from quick_math_ import QuickMath
+
 
 if hasattr(Qt, 'AA_EnableHighDpiScaling'):
     QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)
@@ -23,13 +27,29 @@ class BrainDevMain(QMainWindow):
         self.list_of_games_bt.clicked.connect(self.list_of_games_window)
         self.training_bt.clicked.connect(self.training)
         self.shop_bt.clicked.connect(self.test)
-        self.settings_bt.clicked.connect(self.test)
         self.edit_profile_bt.clicked.connect(self.change_profile_form)
         self.what_is_that.clicked.connect(self.mystery_bt)
         self.player = QMediaPlayer(self)
-        self.player.setMedia(
-            QMediaContent(QUrl.fromLocalFile(r"C:\Users\faken\PycharmProjects\Brain-Dev\Music\c418-haggstrom-minecraft-volume-alpha-savefrom.com.wav")))
+        self.music_lst = QMediaPlaylist(self)
+        self.music_lst.addMedia([QMediaContent(QUrl.fromLocalFile(
+            r"Music\c418-haggstrom-minecraft-volume-alpha-savefrom.com.wav")),
+            QMediaContent(QUrl.fromLocalFile(
+                r"Music\c418-wet-hands-minecraft-volume-alpha-savefrom.com.wav")),
+            QMediaContent(QUrl.fromLocalFile(
+                r"Music\c418-droopy-likes-your-face-minecraft-volume-alpha-savefrom.com.wav")),
+            QMediaContent(QUrl.fromLocalFile(
+                r"CMusic\c418-subwoofer-lullaby-minecraft-volume-alpha-savefrom.com.wav")),
+            QMediaContent(QUrl.fromLocalFile(
+                r"Music\c418-sweden-minecraft-volume-alpha-savefrom.com.wav")),
+            QMediaContent(QUrl.fromLocalFile(
+                r"Music\c418-equinoxe-minecraft-volume-alpha-savefrom.com.wav"))])
+        self.player = QMediaPlayer(self)
+        self.player.setPlaylist(self.music_lst)
         self.player.play()
+        self.shop_bt.clicked.connect(self.test)
+        self.settings_bt.clicked.connect(self.setting)
+        self.edit_profile_bt.clicked.connect(self.change_profile_form)
+        self.what_is_that.clicked.connect(self.mystery_bt)
 
     def test(self):
         print("I clicked ->) ", self.sender().text())
@@ -41,6 +61,10 @@ class BrainDevMain(QMainWindow):
     def list_of_games_window(self):
         self.list_of_games = ListOfGames(self)
         self.list_of_games.show()
+
+    def setting(self):
+        self.set = SetMusic(self)
+        self.set.show()
 
     def training(self):
         eval(ch(["self.quick_math()", "self.math()", "self.attention()", "self.reaction()", "self.spatial_mem()",

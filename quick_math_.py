@@ -1,18 +1,19 @@
 from random import choice as ch
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent, QMediaPlaylist
-from PyQt5 import uic
 from PyQt5.QtCore import Qt, QUrl
 from PyQt5.QtWidgets import QMainWindow
-
+from quickmathdesign import Ui_MainWindow
 from oh_no import OhNo
 from quick_math_won import WonGame
 from timer_co import Timer
 
 
-class QuickMath(QMainWindow):
-    def __init__(self, other):
+class QuickMath(QMainWindow, Ui_MainWindow):
+    def __init__(self, other, other1):
         super().__init__()
-        uic.loadUi('Design//quickmath.ui', self)
+        self.setupUi(self)
+        other1.close()
+        self.other1 = other1
         self.main = other
         self.lsta = []
         self.nx = tuple(range(-20, 21))
@@ -56,6 +57,7 @@ class QuickMath(QMainWindow):
         self.bt_9.clicked.connect(self.addx)
         self.back_bt.clicked.connect(self.backb)
         self.minus_bt.clicked.connect(self.addx)
+        self.wonthegame = False
 
 
     def addx(self):
@@ -96,7 +98,7 @@ class QuickMath(QMainWindow):
             self.answer.setText(self.answer.text()[:-1])
 
     def not_good(self):
-        self.ohno = OhNo(self, self.main)
+        self.ohno = OhNo(self, self.main, self.other1)
         self.ohno.show()
 
     def check_corr(self):
@@ -111,10 +113,13 @@ class QuickMath(QMainWindow):
             self.count_seq.setText(str(self.count))
             if self.count == 10:
                 self.timer_w.yes = False
+                self.wonthegame = True
                 self.won = WonGame(self, self.main)
                 self.player.stop()
                 self.won.show()
 
     def closeEvent(self, event):
+        if not self.wonthegame:
+            self.main.player.play()
         self.player.stop()
-        self.main.player.play()
+        self.timer_w.timer.stop()

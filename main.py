@@ -5,13 +5,11 @@ from PyQt5 import uic
 from PyQt5.QtCore import Qt, QUrl
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent, QMediaPlaylist
 from PyQt5.QtWidgets import QApplication, QMainWindow
-
 from changeprofile import ChangeProfileForm
 from list_of_games import ListOfGames
 from questionmark import Creator
 from set_form import SetMusic
-from quick_math_ import QuickMath
-
+from howtoplay_quickmath import HowToPlay
 
 if hasattr(Qt, 'AA_EnableHighDpiScaling'):
     QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)
@@ -71,9 +69,8 @@ class BrainDevMain(QMainWindow):
                  "self.unscramble()"]))
 
     def quick_math(self):
-        self.quickmath = QuickMath(self)
-        self.player.pause()
-        self.quickmath.show()
+        self.how = HowToPlay(self)
+        self.how.show()
 
     def math(self):
         print("1")

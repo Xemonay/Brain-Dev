@@ -1,14 +1,13 @@
-from PyQt5 import uic
-from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent, QMediaPlaylist
+from PyQt5.QtMultimedia import QMediaContent, QMediaPlaylist
 from PyQt5.QtCore import QUrl
+from setdesign import Ui_Form
 from PyQt5.QtWidgets import QDialog, QFileDialog
-from random import choice as ch
 
 
-class SetMusic(QDialog):
+class SetMusic(QDialog, Ui_Form):
     def __init__(self, main):
         super().__init__()
-        uic.loadUi('Design//set.ui', self)
+        self.setupUi(self)
         self.horizontalSliderL.setValue(main.player.volume())
         self.main = main
         self.player = main.player

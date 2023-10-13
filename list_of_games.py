@@ -1,11 +1,10 @@
-from PyQt5 import uic
 from PyQt5.QtWidgets import QMainWindow
+from list_of_gamesdesign import Ui_MainWindow
 
-
-class ListOfGames(QMainWindow):
+class ListOfGames(QMainWindow, Ui_MainWindow):
     def __init__(self, main):
         super().__init__()
-        uic.loadUi('Design//list_of_games.ui', self)
+        self.setupUi(self)
         self.main = main
         self.quick_math_bt.clicked.connect(self.quick_math)
         self.math_bt.clicked.connect(self.math)

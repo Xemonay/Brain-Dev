@@ -3,7 +3,7 @@ from quick_math_ import QuickMath
 from howtoplay_quickmathdesign import Ui_Form
 
 
-class HowToPlay(QDialog, Ui_Form):
+class HowToPlayQM(QDialog, Ui_Form):
     def __init__(self, main):
         super().__init__()
         self.main = main

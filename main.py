@@ -9,7 +9,9 @@ from changeprofile import ChangeProfileForm
 from list_of_games import ListOfGames
 from questionmark import Creator
 from set_form import SetMusic
-from howtoplay_quickmath import HowToPlay
+from howtoplay_quickmath import HowToPlayQM
+from howtoplayAttention import HowToPlayA
+
 
 if hasattr(Qt, 'AA_EnableHighDpiScaling'):
     QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)
@@ -69,14 +71,15 @@ class BrainDevMain(QMainWindow):
                  "self.unscramble()"]))
 
     def quick_math(self):
-        self.how = HowToPlay(self)
+        self.how = HowToPlayQM(self)
         self.how.show()
 
     def math(self):
         print("1")
 
     def attention(self):
-        print("1")
+        self.how = HowToPlayA(self)
+        self.how.show()
 
     def reaction(self):
         print("1")

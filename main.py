@@ -3,15 +3,15 @@ from random import choice as ch
 
 from PyQt5 import uic
 from PyQt5.QtCore import Qt, QUrl
+from PyQt5.QtGui import QPixmap
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent, QMediaPlaylist
 from PyQt5.QtWidgets import QApplication, QMainWindow
+
 from changeprofile import ChangeProfileForm
+from howtoplay import Choice
 from list_of_games import ListOfGames
 from questionmark import Creator
 from set_form import SetMusic
-from howtoplay_quickmath import HowToPlayQM
-from howtoplayAttention import HowToPlayA
-
 
 if hasattr(Qt, 'AA_EnableHighDpiScaling'):
     QApplication.setAttribute(Qt.AA_EnableHighDpiScaling, True)
@@ -30,6 +30,11 @@ class BrainDevMain(QMainWindow):
         self.what_is_that.clicked.connect(self.mystery_bt)
         self.player = QMediaPlayer(self)
         self.music_lst1 = QMediaPlaylist(self)
+        self.hat_lal.setPixmap(QPixmap("Pictures//dasabucket_sand6.png"))
+        self.ron_va_lal.setPixmap(QPixmap("Pictures//ron_va6.png"))
+        self.ron_del_lal.setPixmap(QPixmap("Pictures//ron_del.png"))
+        self.ron_lu_lal.setPixmap(QPixmap("Pictures//ron_lu.png"))
+        self.ron_te_lal.setPixmap(QPixmap("Pictures//ron_te.png"))
         self.music_lst1.addMedia([QMediaContent(QUrl.fromLocalFile(
             r"Music\c418-haggstrom-minecraft-volume-alpha-savefrom.com.wav")),
             QMediaContent(QUrl.fromLocalFile(
@@ -71,24 +76,22 @@ class BrainDevMain(QMainWindow):
                  "self.unscramble()"]))
 
     def quick_math(self):
-        self.how = HowToPlayQM(self)
-        self.how.show()
+        self.how = Choice(self, "QuickMath")
 
-    def math(self):
-        print("1")
+    def goword(self):
+        self.how = Choice(self, "GOWORD")
 
     def attention(self):
-        self.how = HowToPlayA(self)
-        self.how.show()
+        self.how = Choice(self, "Attention")
 
     def reaction(self):
-        print("1")
+        self.how = Choice(self, "Reaction")
 
     def spatial_mem(self):
-        print("1")
+        self.how = Choice(self, "SpatialMem")
 
     def unscramble(self):
-        print("1")
+        self.how = Choice(self, "Unscramble")
 
     def mystery_bt(self):
         self.questionmark = Creator()

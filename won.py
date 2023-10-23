@@ -1,7 +1,8 @@
-from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
 from PyQt5.QtCore import QUrl
+from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
 from PyQt5.QtWidgets import QDialog
-from won_game_quick_mathdesign import Ui_Form
+
+from DesingPY.won_game1 import Ui_Form
 
 
 class WonGame(QDialog, Ui_Form):
@@ -9,6 +10,7 @@ class WonGame(QDialog, Ui_Form):
         super().__init__()
         self.setupUi(self)
         self.avg_sec.setText(str(sum(other.lsta) / 10))
+        self.mistake_l.setText(str(other.lstam))
         self.name_label.setText(main.username.text())
         self.okay_bt.clicked.connect(self.yeah)
         self.other = other

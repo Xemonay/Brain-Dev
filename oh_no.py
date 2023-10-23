@@ -1,6 +1,6 @@
 from PyQt5.QtCore import QUrl
 from PyQt5.QtWidgets import QDialog
-from oh_noodesign import Ui_Dialog
+from DesingPY.oh_noodesign import Ui_Dialog
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent
 
 class OhNo(QDialog, Ui_Dialog):

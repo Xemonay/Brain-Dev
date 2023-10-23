@@ -250,8 +250,8 @@ border-radius:10px;</string>
      <widget class="QLabel" name="avatar">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>20</y>
+        <x>20</x>
+        <y>70</y>
         <width>185</width>
         <height>205</height>
        </rect>
@@ -266,8 +266,8 @@ border-radius:10px;</string>
      <widget class="QLabel" name="username">
       <property name="geometry">
        <rect>
-        <x>250</x>
-        <y>20</y>
+        <x>240</x>
+        <y>40</y>
         <width>181</width>
         <height>51</height>
        </rect>
@@ -285,8 +285,8 @@ border-radius:10px;</string>
      <widget class="QLabel" name="status">
       <property name="geometry">
        <rect>
-        <x>240</x>
-        <y>70</y>
+        <x>230</x>
+        <y>90</y>
         <width>321</width>
         <height>341</height>
        </rect>
@@ -298,8 +298,8 @@ border-radius:10px;</string>
      <widget class="QPushButton" name="edit_profile_bt">
       <property name="geometry">
        <rect>
-        <x>564</x>
-        <y>10</y>
+        <x>554</x>
+        <y>30</y>
         <width>71</width>
         <height>21</height>
        </rect>
@@ -319,8 +319,8 @@ border-color:white;</string>
      <widget class="QLabel" name="age">
       <property name="geometry">
        <rect>
-        <x>30</x>
-        <y>240</y>
+        <x>20</x>
+        <y>290</y>
         <width>161</width>
         <height>41</height>
        </rect>
@@ -333,6 +333,71 @@ border-color:white;</string>
       </property>
       <property name="text">
        <string>Age:</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="hat_lal">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>0</y>
+        <width>151</width>
+        <height>101</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ron_del_lal">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>240</y>
+        <width>42</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ron_va_lal">
+      <property name="geometry">
+       <rect>
+        <x>70</x>
+        <y>240</y>
+        <width>41</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ron_te_lal">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>240</y>
+        <width>42</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="ron_lu_lal">
+      <property name="geometry">
+       <rect>
+        <x>120</x>
+        <y>240</y>
+        <width>44</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>TextLabel</string>
       </property>
      </widget>
     </widget>

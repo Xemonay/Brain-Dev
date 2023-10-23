@@ -18,7 +18,6 @@ class BrainDevMain(QMainWindow):
         self.setMask(pixmap.mask())
 
 
-
 if __name__ == '__main__':
     app = QApplication(sys.argv)
     ex = BrainDevMain()

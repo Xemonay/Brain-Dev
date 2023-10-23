@@ -1,5 +1,5 @@
 from PyQt5.QtWidgets import QDialog
-from creatordesign import Ui_Form
+from DesingPY.creatordesign import Ui_Form
 
 
 class Creator(QDialog, Ui_Form):

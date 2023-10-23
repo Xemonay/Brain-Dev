@@ -1,6 +1,6 @@
 from PyQt5.QtMultimedia import QMediaContent, QMediaPlaylist
 from PyQt5.QtCore import QUrl
-from setdesign import Ui_Form
+from DesingPY.setdesign import Ui_Form
 from PyQt5.QtWidgets import QDialog, QFileDialog
 
 

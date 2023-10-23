@@ -75,14 +75,14 @@ border-radius:10px;
 </string>
    </property>
    <property name="text">
-    <string>You will count bananas and apples 10 Times</string>
+    <string>You will count bananas and apples 16 Times</string>
    </property>
   </widget>
   <widget class="QPushButton" name="quick_math_bt_2">
    <property name="geometry">
     <rect>
      <x>200</x>
-     <y>0</y>
+     <y>10</y>
      <width>271</width>
      <height>71</height>
     </rect>

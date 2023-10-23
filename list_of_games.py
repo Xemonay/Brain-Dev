@@ -1,5 +1,6 @@
 from PyQt5.QtWidgets import QMainWindow
-from list_of_gamesdesign import Ui_MainWindow
+from DesingPY.list_of_gamesdesign import Ui_MainWindow
+
 
 class ListOfGames(QMainWindow, Ui_MainWindow):
     def __init__(self, main):
@@ -7,7 +8,7 @@ class ListOfGames(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.main = main
         self.quick_math_bt.clicked.connect(self.quick_math)
-        self.math_bt.clicked.connect(self.math)
+        self.math_bt.clicked.connect(self.goword)
         self.attention_bt.clicked.connect(self.attention)
         self.reaction_bt.clicked.connect(self.reaction)
         self.spatial_mem_bt.clicked.connect(self.spatial_mem)
@@ -17,8 +18,8 @@ class ListOfGames(QMainWindow, Ui_MainWindow):
         self.main.quick_math()
         self.close()
 
-    def math(self):
-        self.main.math()
+    def goword(self):
+        self.main.goword()
         self.close()
 
     def attention(self):

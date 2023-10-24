@@ -3,10 +3,11 @@ from PyQt5.QtCore import QTimer
 
 
 class Timer(QMainWindow):
-    def __init__(self, obj, spatialmem=False, unscramble=False):
+    def __init__(self, obj, spatialmem=False, unscramble=False, goword=False):
         super().__init__()
         self.spatialmem = spatialmem
         self.unscramble = unscramble
+        self.goword = goword
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.showtime)
         self.obj = obj
@@ -34,6 +35,10 @@ class Timer(QMainWindow):
                     self.obj.do1()
                 if self.seconds == 20:
                     self.obj.not_good()
+            elif self.goword:
+                self.obj.label_T.setText("")
+                if self.seconds == 16:
+                    self.obj.do1()
             else:
                 if self.seconds == 10:
                     self.yes = False

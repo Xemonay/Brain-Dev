@@ -37,6 +37,7 @@ class QuickMath(QMainWindow, Ui_MainWindow):
         self.player.play()
         self.player.setVolume(self.main.player.volume())
         self.key_equal = Qt.Key_Equal
+        self.key_enter = Qt.Key_Return
         self.key_MINUS = Qt.Key_Minus
         self.key_BS = Qt.Key_Backspace
         self.key_0 = Qt.Key_0
@@ -95,6 +96,8 @@ class QuickMath(QMainWindow, Ui_MainWindow):
         if eventQKeyEvent.key() == self.key_MINUS and not eventQKeyEvent.isAutoRepeat():
             self.minus_bt.click()
         if eventQKeyEvent.key() == self.key_equal and not eventQKeyEvent.isAutoRepeat():
+            self.equal_bt.click()
+        if eventQKeyEvent.key() == self.key_enter and not eventQKeyEvent.isAutoRepeat():
             self.equal_bt.click()
         if eventQKeyEvent.key() == self.key_BS:
             self.back_bt.click()

@@ -9,7 +9,7 @@ class WonGame(QDialog, Ui_Form):
     def __init__(self, other, main):
         super().__init__()
         self.setupUi(self)
-        self.avg_sec.setText(str(sum(other.lsta) / 10))
+        self.avg_sec.setText(str(round(sum(other.lsta) / other.count, 2)))
         self.mistake_l.setText(str(other.lstam))
         self.name_label.setText(main.username.text())
         self.okay_bt.clicked.connect(self.yeah)

@@ -7,7 +7,7 @@ from random import choice as ch
 from english_words import get_english_words_set
 from oh_no import OhNo
 from timer_co import Timer
-
+from icecream import ic
 
 class GOWORD(QMainWindow):
     def __init__(self, other, other1):
@@ -16,9 +16,12 @@ class GOWORD(QMainWindow):
         other1.close()
         self.cw6 = ""
         self.lstacw6 = tuple(filter(lambda x: len(x) >= 5, list(get_english_words_set(['web2'], lower=True))))
+        self.lstacw6c = tuple(filter(lambda x: len(x) >= 3, list(get_english_words_set(['web2'], lower=True))))
         self.lstacw6was = set()
         self.cw6 = ch(self.lstacw6)
+        self.cw6a = 0
         self.alpha = {}
+        self.word_lal.setAlignment(Qt.AlignCenter)
         for x in self.cw6:
             if x not in self.alpha:
                 self.alpha[x] = 1
@@ -27,12 +30,13 @@ class GOWORD(QMainWindow):
         self.word_lal.setText(self.cw6)
         self.count_6 = 0
         self.lstam = 0
-        self.lsta = []
+        self.lsta = [[0]]
         self.other1 = other1
         self.main = other
         self.timer_w = Timer(self, goword=True)
         self.timer_w.timer.start(1000)
-        self.count = 0
+        self.count = 1
+        self.count_lal.setText("1")
         self.player = QMediaPlayer(self)
         self.music_lst1 = QMediaPlaylist(self)
         self.music_lst1.addMedia(QMediaContent(QUrl.fromLocalFile(r"Music/videoplayback.wav")))
@@ -55,27 +59,63 @@ class GOWORD(QMainWindow):
     def check_corr(self):
         okay = True
         alpha1 = {}
-        if self.enter_word.text().lower() in self.lstacw6:
-            for x in self.enter_word.text():
-                if x not in alpha1:
-                    alpha1[x] = 1
+        if self.enter_word.text().lower() == self.cw6:
+            self.label_T.setText("You cant put the exact same word!")
+        else:
+            if self.enter_word.text().lower() not in self.lstacw6was:
+                if self.enter_word.text().lower() in self.lstacw6c:
+                    for x in self.enter_word.text().lower():
+                        if x not in alpha1:
+                            alpha1[x] = 1
+                        else:
+                            alpha1[x] += 1
+                    for x in alpha1.keys():
+                        if self.alpha.get(x, 0) - alpha1.get(x) < 0:
+                            okay = False
+                            break
                 else:
-                    alpha1[x] += 1
-            for x in alpha1.keys():
-                if self.alpha.get(x, 0) - alpha1.get(x) < 1:
                     okay = False
-        else:
-            okay = False
-        if okay:
-            self.lsta.append(self.timer_w.seconds)
-            self.count_6 += 1
-            self.count_lal_2.setText(str(self.count_6))
-            self.enter_word.setText("")
-        else:
-            pass
+                if okay:
+                    self.lstacw6was.add(self.enter_word.text().lower())
+                    self.lsta[-1].append(self.timer_w.seconds - self.cw6a)
+                    self.cw6a = self.timer_w.seconds
+                    self.count_6 += 1
+                    self.count_lal_2.setText(str(self.count_6))
+                    self.enter_word.setText("")
+                else:
+                    self.lstam += 1
+                    self.enter_word.setStyleSheet("color: red")
+            else:
+                self.label_T.setStyleSheet("color: FFEB3B")
+                self.label_T.setText("Already was checked!")
 
     def do1(self):
+        self.cw6a = 0
+        if self.count_6 < 1:
+            self.not_good()
+        self.count_lal.setText(str(self.count))
+        if self.count == 10:
+            ic(self.lsta)
+            self.lsta = [sum(x) for x in self.lsta]
+            self.wonthegame = True
+            self.won = WonGame(self, self.main)
+            self.won.show()
+        self.count_lal_2.setText("0")
+        self.lsta.append([0])
+        self.cw6 = 0
+        self.count += 1
         self.timer_w.seconds = 0
+        self.lstacw6was = set()
+        self.cw6 = ch(self.lstacw6)
+        self.alpha = {}
+        for x in self.cw6:
+            if x not in self.alpha:
+                self.alpha[x] = 1
+            else:
+                self.alpha[x] += 1
+        self.word_lal.setText(self.cw6)
+        self.count_6 = 0
+        self.enter_word.setText("")
 
     def not_good(self):
         self.not_wonthegame = True

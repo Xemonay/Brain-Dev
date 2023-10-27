@@ -34,7 +34,11 @@ class Unscramble(QMainWindow):
             else:
                 self.newcw6 = list(self.cw6)
                 sh(self.newcw6)
-                self.newcw6[ch(range(0, len(self.cw6)))] = ch(self.cw6)
+                choice = ch(range(0, len(self.cw6)))
+                ch_xa = ch(self.cw6)
+                while self.newcw6[choice] == ch_xa:
+                    ch_xa = ch(self.cw6)
+                self.newcw6[choice] = ch_xa
                 eval(f"self.answer{x}.setText(''.join(self.newcw6))")
         self.player = QMediaPlayer(self)
         self.music_lst1 = QMediaPlaylist(self)
@@ -93,7 +97,11 @@ class Unscramble(QMainWindow):
             else:
                 self.newcw6 = list(self.cw6)
                 sh(self.newcw6)
-                self.newcw6[ch(range(0, len(self.cw6)))] = ch(self.cw6)
+                choice = ch(range(0, len(self.cw6)))
+                ch_xa = ch(self.cw6)
+                while self.newcw6[choice] == ch_xa:
+                    ch_xa = ch(self.cw6)
+                self.newcw6[choice] = ch_xa
                 eval(f"self.answer{x}.setText(''.join(self.newcw6))")
 
     def not_good(self):

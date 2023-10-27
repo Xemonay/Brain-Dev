@@ -36,7 +36,9 @@ class Timer(QMainWindow):
                 if self.seconds == 20:
                     self.obj.not_good()
             elif self.goword:
+                self.obj.enter_word.setStyleSheet('')
                 self.obj.label_T.setText("")
+                self.obj.label_T.setStyleSheet("color: red")
                 if self.seconds == 16:
                     self.obj.do1()
             else:

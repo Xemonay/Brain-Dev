@@ -40,6 +40,7 @@ class Attention(QMainWindow):
         self.player.setPlaylist(self.music_lst1)
         self.player.play()
         self.key_equal = Qt.Key_Equal
+        self.key_enter = Qt.Key_Return
         self.key_BS = Qt.Key_Backspace
         self.key_0 = Qt.Key_0
         self.key_1 = Qt.Key_1
@@ -119,6 +120,8 @@ class Attention(QMainWindow):
         if eventQKeyEvent.key() == self.key_9 and not eventQKeyEvent.isAutoRepeat():
             self.bt_9.click()
         if eventQKeyEvent.key() == self.key_equal and not eventQKeyEvent.isAutoRepeat():
+            self.equal_bt.click()
+        if eventQKeyEvent.key() == self.key_enter and not eventQKeyEvent.isAutoRepeat():
             self.equal_bt.click()
         if eventQKeyEvent.key() == self.key_BS:
             self.back_bt.click()

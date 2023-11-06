@@ -1,20 +1,22 @@
 from random import choice as ch
-from oh_no import OhNo
-from won import WonGame
-from PyQt5 import uic
+
 from PyQt5.QtCore import Qt, QUrl
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent, QMediaPlaylist
 from PyQt5.QtWidgets import QMainWindow
 
+from DesingPY.design_attention import Ui_MainWindow
+from oh_no import OhNo
 from timer_co import Timer
+from won import WonGame
 
 
-class Attention(QMainWindow):
+class Attention(QMainWindow, Ui_MainWindow):
     def __init__(self, other, other1):
         super().__init__()
-        uic.loadUi('Design//attention.ui', self)
+        self.setupUi(self)
         other1.close()
+        self.name = "at"
         self.what = ""
         self.other1 = other1
         self.main = other

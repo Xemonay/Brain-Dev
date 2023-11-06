@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import QMainWindow
+
 from DesingPY.list_of_gamesdesign import Ui_MainWindow
 
 

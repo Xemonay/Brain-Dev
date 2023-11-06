@@ -1,5 +1,5 @@
-from PyQt5.QtWidgets import QMainWindow
 from PyQt5.QtCore import QTimer
+from PyQt5.QtWidgets import QMainWindow
 
 
 class Timer(QMainWindow):

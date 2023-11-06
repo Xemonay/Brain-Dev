@@ -1,19 +1,22 @@
-from won import WonGame
-from PyQt5 import uic
+from random import choice as ch
+
 from PyQt5.QtCore import QUrl
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent, QMediaPlaylist
 from PyQt5.QtWidgets import QMainWindow
-from random import choice as ch
+
+from DesingPY.design_reaction import Ui_MainWindow
 from oh_no import OhNo
 from timer_co import Timer
+from won import WonGame
 
 
-class Reaction(QMainWindow):
+class Reaction(QMainWindow, Ui_MainWindow):
     def __init__(self, other, other1):
         super().__init__()
-        uic.loadUi('Design//reaction.ui', self)
+        self.setupUi(self)
         other1.close()
         self.lstam = 0
+        self.name = "ra"
         self.lsta = []
         self.other1 = other1
         self.main = other
@@ -36,7 +39,6 @@ class Reaction(QMainWindow):
         self.shake_the_buttons()
         self.player.play()
         self.target_bt.clicked.connect(self.check_corr)
-
 
     def check_corr(self):
         if self.sender() == self.target_bt:

@@ -1,7 +1,10 @@
-from PyQt5.QtMultimedia import QMediaContent, QMediaPlaylist
+import sqlite3
+
 from PyQt5.QtCore import QUrl
-from DesingPY.setdesign import Ui_Form
+from PyQt5.QtMultimedia import QMediaContent, QMediaPlaylist
 from PyQt5.QtWidgets import QDialog, QFileDialog
+
+from DesingPY.setdesign import Ui_Form
 
 
 class SetMusic(QDialog, Ui_Form):
@@ -14,6 +17,12 @@ class SetMusic(QDialog, Ui_Form):
         self.horizontalSliderL.valueChanged.connect(self.change_vol)
         self.volume_ll.setText("Volume:" + str(self.horizontalSliderL.value()))
         self.next_music.clicked.connect(self.nextmusic)
+        if self.main.log:
+            self.con = sqlite3.connect('DataBases//accounts.sqlite')
+            afs = self.con.cursor().execute('''SELECT music FROM item
+                                                WHERE name = ?'''
+                                            '', (self.main.username.text(),)).fetchone()[0]
+            self.horizontalSliderL.setValue(afs)
         self.pre_music.clicked.connect(self.prevmusic)
         self.change_msc_0.clicked.connect(self.changetodefault)
         self.change_msc.clicked.connect(self.change_music)
@@ -39,3 +48,11 @@ class SetMusic(QDialog, Ui_Form):
         playlist.setPlaybackMode(QMediaPlaylist.Loop)
         self.player.setPlaylist(playlist)
         self.player.play()
+
+    def closeEvent(self, a0):
+        if self.main.log:
+            self.con.cursor().execute('''UPDATE item
+                            set music = ?
+                            WHERE name = ?''', (self.main.player.volume(), self.main.username.text()))
+            self.con.commit()
+            self.con.close()

@@ -4,10 +4,10 @@ from PyQt5.QtCore import Qt, QUrl
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent, QMediaPlaylist
 from PyQt5.QtWidgets import QMainWindow
 
+from DesingPY.design_quickmath import Ui_MainWindow
 from oh_no import OhNo
-from won import WonGame
-from DesingPY.quickmathdesign import Ui_MainWindow
 from timer_co import Timer
+from won import WonGame
 
 
 class QuickMath(QMainWindow, Ui_MainWindow):
@@ -17,6 +17,7 @@ class QuickMath(QMainWindow, Ui_MainWindow):
         other1.close()
         self.other1 = other1
         self.main = other
+        self.name = "QM"
         self.lsta = []
         self.lstam = 0
         self.nx = tuple(range(-20, 21))
@@ -121,7 +122,7 @@ class QuickMath(QMainWindow, Ui_MainWindow):
             self.timer_w.seconds = 0
             self.count += 1
             self.count_seq.setText(str(self.count))
-            if self.count == 10:
+            if self.count == 1:
                 self.timer_w.yes = False
                 self.wonthegame = True
                 self.won = WonGame(self, self.main)

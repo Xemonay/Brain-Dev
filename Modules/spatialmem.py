@@ -1,12 +1,13 @@
 from random import choice as ch
-from oh_no import OhNo
-from won import WonGame
+
 from PyQt5.QtCore import QUrl
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent, QMediaPlaylist
 from PyQt5.QtWidgets import QMainWindow
-from DesingPY.spatialmemdesign import Ui_MainWindow
 
+from DesingPY.spatialmemdesign import Ui_MainWindow
+from oh_no import OhNo
 from timer_co import Timer
+from won import WonGame
 
 
 class SpatialMem(QMainWindow, Ui_MainWindow):
@@ -15,6 +16,7 @@ class SpatialMem(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.other1 = other1
         other1.close()
+        self.name = "sa"
         self.main = other
         self.count = 0
         self.lstam = 0

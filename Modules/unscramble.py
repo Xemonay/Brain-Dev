@@ -1,20 +1,22 @@
 from random import choice as ch, shuffle as sh
-from oh_no import OhNo
-from won import WonGame
+
 from PyQt5.QtCore import QUrl, Qt
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent, QMediaPlaylist
 from PyQt5.QtWidgets import QMainWindow
-from PyQt5 import uic
 
+from DesingPY.design_unscramble import Ui_MainWindow
+from oh_no import OhNo
 from timer_co import Timer
+from won import WonGame
 
 
-class Unscramble(QMainWindow):
+class Unscramble(QMainWindow, Ui_MainWindow):
     def __init__(self, other, other1):
         super().__init__()
-        uic.loadUi('Design//unscramble.ui', self)
+        self.setupUi(self)
         self.other1 = other1
         other1.close()
+        self.name = "ua"
         self.main = other
         self.count = 0
         self.lstam = 0

@@ -1,18 +1,20 @@
-from won import WonGame
-from PyQt5 import uic
+from random import choice as ch
+
 from PyQt5.QtCore import QUrl, Qt
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent, QMediaPlaylist
 from PyQt5.QtWidgets import QMainWindow
-from random import choice as ch
 from english_words import get_english_words_set
+
+from DesingPY.design_goword import Ui_MainWindow
 from oh_no import OhNo
 from timer_co import Timer
-from icecream import ic
+from won import WonGame
 
-class GOWORD(QMainWindow):
+
+class GOWORD(QMainWindow, Ui_MainWindow):
     def __init__(self, other, other1):
         super().__init__()
-        uic.loadUi('Design//goword.ui', self)
+        self.setupUi(self)
         other1.close()
         self.cw6 = ""
         self.lstacw6 = tuple(filter(lambda x: len(x) >= 5, list(get_english_words_set(['web2'], lower=True))))
@@ -20,6 +22,7 @@ class GOWORD(QMainWindow):
         self.lstacw6was = set()
         self.cw6 = ch(self.lstacw6)
         self.cw6a = 0
+        self.name = "go"
         self.alpha = {}
         self.word_lal.setAlignment(Qt.AlignCenter)
         for x in self.cw6:
@@ -93,10 +96,9 @@ class GOWORD(QMainWindow):
         self.cw6a = 0
         if self.count_6 < 1:
             self.not_good()
-        self.count_lal.setText(str(self.count))
+        self.count_lal.setText(str(self.count) + " / 10")
         if self.count == 10:
-            ic(self.lsta)
-            self.lsta = [sum(x) for x in self.lsta]
+            self.lsta = [sum(x) / (len(x) - 1) if len(x) > 1 else 0 for x in self.lsta]
             self.wonthegame = True
             self.won = WonGame(self, self.main)
             self.won.show()

@@ -20,7 +20,7 @@ class Ui_Form(object):
         self.label_3 = QtWidgets.QLabel(Form)
         self.label_3.setGeometry(QtCore.QRect(70, 20, 512, 512))
         self.label_3.setText("")
-        self.label_3.setPixmap(QtGui.QPixmap(r"Pictures/ICON/BRAIN-DEV 1024 11 - Copy.png"))
+        self.label_3.setPixmap(QtGui.QPixmap(r"Pictures/ICON/BRAIN-DEV_1024_11_-_Copy.png"))
         self.label_3.setObjectName("label_3")
         self.label_4 = QtWidgets.QLabel(Form)
         self.label_4.setGeometry(QtCore.QRect(380, 600, 61, 16))

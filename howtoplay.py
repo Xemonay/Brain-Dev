@@ -4,7 +4,7 @@ from Modules.quick_math_ import QuickMath
 from Modules.reaction import Reaction
 from Modules.spatialmem import SpatialMem
 from Modules.unscramble import Unscramble
-from Modules.GOWORD import GOWORD
+from Modules.goword import GOWORD
 
 
 class Choice:

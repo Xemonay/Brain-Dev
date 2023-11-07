@@ -3,7 +3,6 @@ from random import choice as ch
 from PyQt5.QtCore import QUrl, Qt
 from PyQt5.QtMultimedia import QMediaPlayer, QMediaContent, QMediaPlaylist
 from PyQt5.QtWidgets import QMainWindow
-from english_words import get_english_words_set
 
 from DesingPY.design_goword import Ui_MainWindow
 from oh_no import OhNo
@@ -17,8 +16,10 @@ class GOWORD(QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         other1.close()
         self.cw6 = ""
-        self.lstacw6 = tuple(filter(lambda x: len(x) >= 5, list(get_english_words_set(['web2'], lower=True))))
-        self.lstacw6c = tuple(filter(lambda x: len(x) >= 3, list(get_english_words_set(['web2'], lower=True))))
+        with open('TEXT//TEXT6.txt', mode='r', encoding='utf-8') as a:
+            self.lstacw6 = a.read().split()
+        with open('TEXT//TEXT16.txt', mode='r', encoding='utf-8') as a:
+            self.lstacw6c = a.read().split()
         self.lstacw6was = set()
         self.cw6 = ch(self.lstacw6)
         self.cw6a = 0
@@ -42,7 +43,7 @@ class GOWORD(QMainWindow, Ui_MainWindow):
         self.count_lal.setText("1")
         self.player = QMediaPlayer(self)
         self.music_lst1 = QMediaPlaylist(self)
-        self.music_lst1.addMedia(QMediaContent(QUrl.fromLocalFile(r"Music/videoplayback.wav")))
+        self.music_lst1.addMedia(QMediaContent(QUrl.fromLocalFile("Music//videoplayback.wav")))
         self.player = QMediaPlayer(self)
         self.player.setVolume(self.main.player.volume())
         self.enter_key = Qt.Key_Return

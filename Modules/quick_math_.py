@@ -11,7 +11,7 @@ from won import WonGame
 
 
 class QuickMath(QMainWindow, Ui_MainWindow):
-    def __init__(self, other, other1):
+    def __init__(self, other, other1):  # ИНИЦИАЛИЗАЦИЯ
         super().__init__()
         self.setupUi(self)
         other1.close()
@@ -122,7 +122,7 @@ class QuickMath(QMainWindow, Ui_MainWindow):
             self.timer_w.seconds = 0
             self.count += 1
             self.count_seq.setText(str(self.count))
-            if self.count == 1:
+            if self.count == 10:
                 self.timer_w.yes = False
                 self.wonthegame = True
                 self.won = WonGame(self, self.main)

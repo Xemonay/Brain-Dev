@@ -11,7 +11,7 @@ from won import WonGame
 
 
 class QuickMath(QMainWindow, Ui_MainWindow):
-    def __init__(self, other, other1):  # ИНИЦИАЛИЗАЦИЯ
+    def __init__(self, other, other1):
         super().__init__()
         self.setupUi(self)
         other1.close()

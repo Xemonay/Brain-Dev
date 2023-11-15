@@ -56,6 +56,9 @@ class OhNo(QDialog, Ui_Dialog):
                     c.execute("""UPDATE spatialmem
                                 SET lost = lost + 1, mistakes = mistakes + ?
                                 WHERE name = ?""", (other.lstam, self.main.username.text()))
+        if main.log:
+            cor.commit()
+            cor.close()
         self.main.lst_mist[a] += self.other.lstam
         self.main.lst_lost[a] += 1
         self.other.close()
